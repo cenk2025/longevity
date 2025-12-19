@@ -1,12 +1,19 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/longevity/',
+    base: '/', // Root path for custom domain on Vercel
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
         sourcemap: false,
-        minify: 'esbuild'
+        minify: 'esbuild',
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['@supabase/supabase-js']
+                }
+            }
+        }
     },
     server: {
         port: 5173,
