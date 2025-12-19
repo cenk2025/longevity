@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation - Longevity IQ</title>
+    <link rel="stylesheet" href="src/css/index.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-purple) 100%);
+        }
+
+        .confirmation-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 3rem;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .confirmation-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confirmation-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .confirmation-message {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-home {
+            background: white;
+            color: var(--color-teal);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confirmation-container">
+        <div class="confirmation-icon" id="confirmationIcon">⏳</div>
+        <h1 class="confirmation-title" id="confirmationTitle">Verifying Your Email...</h1>
+        <p class="confirmation-message" id="confirmationMessage">
+            Please wait while we confirm your email address.
+        </p>
+        <div class="spinner" id="spinner"></div>
+        <div id="actionButton" style="display: none;">
+            <a href="/" class="btn-home">Go to Homepage</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { supabase } from './src/utils/supabase.js';
+
+        async function handleEmailConfirmation() {
+            const confirmationIcon = document.getElementById('confirmationIcon');
+            const confirmationTitle = document.getElementById('confirmationTitle');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            const spinner = document.getElementById('spinner');
+            const actionButton = document.getElementById('actionButton');
+
+            try {
+                // Get the session from the URL
+                const { data, error } = await supabase.auth.getSession();
+
+                if (error) throw error;
+
+                if (data.session) {
+                    // Email confirmed successfully
+                    confirmationIcon.textContent = '✅';
+                    confirmationTitle.textContent = 'Email Confirmed!';
+                    confirmationMessage.textContent = 'Your email has been successfully verified. You can now access all features of Longevity IQ.';
+                    spinner.style.display = 'none';
+                    actionButton.style.display = 'block';
+
+                    // Redirect to homepage after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 3000);
+                } else {
+                    // No session found
+                    confirmationIcon.textContent = '❌';
+                    confirmationTitle.textContent = 'Verification Failed';
+                    confirmationMessage.textContent = 'We couldn\'t verify your email. The link may have expired or is invalid.';
+                    spinner.style.display = 'none';
+                    actionButton.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Confirmation error:', error);
+                confirmationIcon.textContent = '❌';
+                confirmationTitle.textContent = 'Verification Failed';
+                confirmationMessage.textContent = error.message || 'An error occurred during verification. Please try again.';
+                spinner.style.display = 'none';
+                actionButton.style.display = 'block';
+            }
+        }
+
+        // Run confirmation when page loads
+        handleEmailConfirmation();
+    </script>
+</body>
+
+</html>
