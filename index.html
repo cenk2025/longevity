@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Longevity IQ - A science-informed platform for longevity assessments, lifestyle insights, and long-term health tracking.">
+  <title>Longevity IQ — Understand Your Health. Extend Your Healthspan.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+      <div class="container navbar-content">
+        <div class="navbar-brand">
+          <span class="logo">Longevity IQ</span>
+        </div>
+        <div class="navbar-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#tests" class="nav-link">Tests</a>
+          <a href="#guides" class="nav-link">Guides</a>
+          <a href="#supplements" class="nav-link">Supplements</a>
+          <button id="langToggle" class="lang-toggle">EN</button>
+          <button id="loginBtn" class="btn btn-secondary">Sign In</button>
+          <button id="signupBtn" class="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="/videos/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title" data-i18n="hero.title">Longevity IQ — Understand Your Health. Extend Your Healthspan.</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">A science-informed platform for longevity assessments, lifestyle insights, and long-term health tracking.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-large" id="createProfileBtn" data-i18n="hero.cta.primary">Create your Longevity Profile</button>
+          <button class="btn btn-secondary btn-large" id="exploreTestsBtn" data-i18n="hero.cta.secondary">Explore Longevity Tests</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is Longevity IQ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="about.title">What Is Longevity IQ</h2>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-icon">🧬</div>
+            <h3 data-i18n="about.healthspan.title">Healthspan vs Lifespan</h3>
+            <p data-i18n="about.healthspan.text">Longevity isn't just about living longer—it's about living better. We focus on healthspan: the years you spend in good health, free from chronic disease and disability.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-icon">📊</div>
+            <h3 data-i18n="about.measure.title">Why Measuring Matters</h3>
+            <p data-i18n="about.measure.text">Lifestyle factors—sleep, nutrition, exercise, stress—compound over time. Understanding where you stand today helps you make informed decisions for tomorrow.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-icon">📈</div>
+            <h3 data-i18n="about.tracking.title">Tracking Over Time</h3>
+            <p data-i18n="about.tracking.text">One-time tests provide snapshots. Continuous tracking reveals trends, helping you see what's working and what needs adjustment in your longevity journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Longevity Tests -->
+    <section id="tests" class="section tests-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="tests.title">Longevity Tests & Assessments</h2>
+        <p class="section-subtitle" data-i18n="tests.subtitle">Quick, educational assessments that help you understand your lifestyle factors. Not diagnostic—informational.</p>
+        
+        <div class="tests-grid" id="testsGrid">
+          <!-- Tests will be dynamically loaded -->
+        </div>
+
+        <div class="disclaimer">
+          <p data-i18n="tests.disclaimer">⚠️ These assessments do not replace medical advice. Always consult healthcare professionals for medical decisions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="section dashboard-preview">
+      <div class="container">
+        <h2 class="section-title" data-i18n="dashboard.title">Your Personal Longevity Dashboard</h2>
+        <div class="dashboard-features">
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 data-i18n="dashboard.feature1.title">Track Your Progress</h3>
+            <p data-i18n="dashboard.feature1.text">View all your test results in one place, with clear visualizations and trend analysis.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 data-i18n="dashboard.feature2.title">Your Data, Your Control</h3>
+            <p data-i18n="dashboard.feature2.text">Complete data ownership with bank-level encryption. Export or delete anytime.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3 data-i18n="dashboard.feature3.title">Actionable Insights</h3>
+            <p data-i18n="dashboard.feature3.text">Receive evidence-based suggestions tailored to your results—no medical claims, just guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supplements Section -->
+    <section id="supplements" class="section supplements-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="supplements.title">Supplements & Interventions</h2>
+        <p class="section-subtitle" data-i18n="supplements.subtitle">Educational overviews with evidence-level indicators. This is guidance, not prescription.</p>
+        
+        <div class="supplements-grid" id="supplementsGrid">
+          <!-- Supplements will be dynamically loaded -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Knowledge & Guides -->
+    <section id="guides" class="section guides-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="guides.title">Science & Guides</h2>
+        <div class="guides-grid" id="guidesGrid">
+          <!-- Guides will be dynamically loaded -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+      <button id="chatbotToggle" class="chatbot-toggle">
+        <span class="chatbot-icon">💬</span>
+      </button>
+      <div id="chatbotWindow" class="chatbot-window hidden">
+        <div class="chatbot-header">
+          <h3>Longevity Assistant</h3>
+          <button id="chatbotClose" class="chatbot-close">×</button>
+        </div>
+        <div id="chatbotMessages" class="chatbot-messages">
+          <div class="chatbot-message bot-message">
+            <p>Hello! I'm here to help you understand longevity concepts and your test results. How can I assist you today?</p>
+          </div>
+        </div>
+        <div class="chatbot-input-container">
+          <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a question...">
+          <button id="chatbotSend" class="chatbot-send">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h4>Product</h4>
+            <a href="#tests">Longevity Tests</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#guides">Science & Guides</a>
+            <a href="#supplements">Supplements</a>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="#about">About Us</a>
+            <a href="#vision">Our Vision</a>
+            <a href="#ethics">Ethics & Privacy</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#cookies">Cookie Policy</a>
+          </div>
+          <div class="footer-column">
+            <h4>Newsletter</h4>
+            <p>Stay updated with longevity science</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email" class="newsletter-input">
+              <button class="btn btn-primary">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Longevity IQ. This platform provides educational information only and does not offer medical advice.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+      <div class="modal-content">
+        <button class="modal-close" id="closeAuthModal">×</button>
+        <div id="authContainer"></div>
+      </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboardModal" class="modal hidden">
+      <div class="modal-content modal-large">
+        <button class="modal-close" id="closeDashboardModal">×</button>
+        <div id="dashboardContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
