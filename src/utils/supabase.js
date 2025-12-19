@@ -1,9 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://hqyzvyiqnsxhqzbihrxo.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxeXp2eWlxbnN4aHF6YmlocnhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxNTI2MDIsImV4cCI6MjA4MTcyODYwMn0.CBNeoo04APxQC0ZiJ7U3XX35nv2vGw7HkZNCVD0jLdU';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables. Please check your .env file.');
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  }
+});
 
 // Auth helpers
 export const signUp = async (email, password, fullName) => {
@@ -16,7 +26,7 @@ export const signUp = async (email, password, fullName) => {
       }
     }
   });
-  
+
   if (error) throw error;
   return data;
 };
@@ -26,7 +36,7 @@ export const signIn = async (email, password) => {
     email,
     password,
   });
-  
+
   if (error) throw error;
   return data;
 };
@@ -55,7 +65,7 @@ export const saveTestResult = async (userId, testType, score, data) => {
       }
     ])
     .select();
-  
+
   if (error) throw error;
   return result;
 };
@@ -66,13 +76,13 @@ export const getTestResults = async (userId, testType = null) => {
     .select('*')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
-  
+
   if (testType) {
     query = query.eq('test_type', testType);
   }
-  
+
   const { data, error } = await query;
-  
+
   if (error) throw error;
   return data;
 };
@@ -84,7 +94,7 @@ export const getUserProfile = async (userId) => {
     .select('*')
     .eq('user_id', userId)
     .single();
-  
+
   if (error && error.code !== 'PGRST116') throw error;
   return data;
 };
@@ -100,7 +110,7 @@ export const updateUserProfile = async (userId, profileData) => {
       }
     ])
     .select();
-  
+
   if (error) throw error;
   return data;
 };
