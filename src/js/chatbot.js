@@ -24,6 +24,12 @@ Your tone should be:
 - Scientific but accessible`;
 
 export async function sendChatMessage(message, conversationHistory = []) {
+    // Always use mock responses in development
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Using mock response in development mode');
+        return getMockResponse(message);
+    }
+
     try {
         // Check if API key is available
         if (!DEEPSEEK_API_KEY) {
@@ -39,29 +45,18 @@ export async function sendChatMessage(message, conversationHistory = []) {
 
         console.log('Sending request to DeepSeek API...');
 
-        // Use proxy endpoint to avoid CORS issues
-        const apiEndpoint = window.location.hostname === 'localhost'
-            ? '/api/chat'  // Local proxy (if available)
-            : 'https://api.deepseek.com/v1/chat/completions'; // Direct call in production
-
-        const response = await fetch(apiEndpoint, {
+        const response = await fetch(DEEPSEEK_API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                ...(apiEndpoint.includes('deepseek.com') && {
-                    'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
-                })
+                'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
             },
-            body: JSON.stringify(
-                apiEndpoint.includes('deepseek.com')
-                    ? {
-                        model: 'deepseek-chat',
-                        messages: messages,
-                        temperature: 0.7,
-                        max_tokens: 500
-                    }
-                    : { messages } // Proxy expects just messages
-            )
+            body: JSON.stringify({
+                model: 'deepseek-chat',
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 500
+            })
         });
 
         console.log('Response status:', response.status);
@@ -69,14 +64,7 @@ export async function sendChatMessage(message, conversationHistory = []) {
         if (!response.ok) {
             const errorText = await response.text();
             console.error('API request failed:', response.status, errorText);
-
-            // Fallback to mock response if API fails
-            if (window.location.hostname === 'localhost') {
-                console.log('Falling back to mock response');
-                return getMockResponse(message);
-            }
-
-            throw new Error(`API request failed: ${response.statusText}`);
+            return getMockResponse(message);
         }
 
         const data = await response.json();
@@ -89,18 +77,8 @@ export async function sendChatMessage(message, conversationHistory = []) {
             stack: error.stack
         });
 
-        // Use mock response in development
-        if (window.location.hostname === 'localhost') {
-            console.log('Using mock response due to error');
-            return getMockResponse(message);
-        }
-
-        // Check if it's a CORS error
-        if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
-            return "I apologize, but I'm having trouble connecting due to browser security restrictions. This feature works best when deployed to production.";
-        }
-
-        return "I apologize, but I'm having trouble connecting right now. Please try again in a moment.";
+        // Fallback to mock response
+        return getMockResponse(message);
     }
 }
 
