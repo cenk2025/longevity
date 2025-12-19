@@ -6,14 +6,7 @@ export default defineConfig({
         outDir: 'dist',
         assetsDir: 'assets',
         sourcemap: false,
-        minify: 'esbuild',
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    'supabase': ['@supabase/supabase-js']
-                }
-            }
-        }
+        minify: 'esbuild'
     },
     server: {
         port: 5173,
