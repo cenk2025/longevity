@@ -1,4 +1,4 @@
-const DEEPSEEK_API_KEY = 'sk-5fba3c36074349d3a2715d6e5860cd89';
+const DEEPSEEK_API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 const SYSTEM_PROMPT = `You are a knowledgeable and calm longevity assistant for Longevity IQ platform. Your role is to:
