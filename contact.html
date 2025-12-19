@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Longevity IQ</title>
+    <meta name="description" content="Get in touch with Longevity IQ - We're here to help">
+    <link rel="stylesheet" href="src/css/index.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-purple) 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--color-teal);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--color-teal);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(34, 211, 238, 0.05);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--color-teal);
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: var(--color-purple);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--color-teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--color-purple);
+            text-decoration: underline;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--color-purple);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section p {
+            color: var(--color-text-primary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            color: var(--color-text-primary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: rgba(34, 211, 238, 0.1);
+            border-left: 4px solid var(--color-teal);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-purple);
+            transform: translateX(-5px);
+        }
+
+        .voon-box {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 2px solid var(--color-teal);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .voon-box h3 {
+            color: var(--color-teal);
+            margin-bottom: 1rem;
+        }
+
+        .voon-box p {
+            margin-bottom: 1rem;
+        }
+
+        .voon-box a {
+            color: var(--color-teal);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .voon-box a:hover {
+            color: var(--color-purple);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="page-header">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-subtitle">We're here to help. Reach out with questions, feedback, or support requests.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>General Inquiries</h3>
+                <p>Questions about Longevity IQ?</p>
+                <a href="mailto:info@longevityiq.com">info@longevityiq.com</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-secondary);">
+                    Response time: 2-3 business days
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🔒</div>
+                <h3>Privacy & Data</h3>
+                <p>Data protection inquiries</p>
+                <a href="mailto:privacy@longevityiq.com">privacy@longevityiq.com</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-secondary);">
+                    Response time: Within 30 days (GDPR)
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">⚖️</div>
+                <h3>Legal</h3>
+                <p>Terms, compliance, legal matters</p>
+                <a href="mailto:legal@longevityiq.com">legal@longevityiq.com</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-secondary);">
+                    Response time: Within 14 business days
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🛠️</div>
+                <h3>Technical Support</h3>
+                <p>Issues with the platform?</p>
+                <a href="mailto:support@longevityiq.com">support@longevityiq.com</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-secondary);">
+                    Response time: 1-2 business days
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What to Include in Your Message</h2>
+            <p>To help us respond quickly and effectively, please include:</p>
+            <ul>
+                <li><strong>Subject:</strong> A clear, descriptive subject line</li>
+                <li><strong>Details:</strong> Specific information about your question or issue</li>
+                <li><strong>Account Info:</strong> Your registered email (if applicable)</li>
+                <li><strong>Screenshots:</strong> If reporting a technical issue, screenshots help</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <strong>⚠️ Important Reminder</strong>
+            <p style="margin-top: 1rem;">
+                Longevity IQ is <strong>not a medical service</strong>. If you have medical questions or health
+                concerns,
+                please contact a qualified healthcare professional. We cannot provide medical advice, diagnosis, or
+                treatment.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <p>Before reaching out, you might find answers in our FAQ section:</p>
+            <ul>
+                <li><strong>Account & Login:</strong> Password reset, account deletion, data export</li>
+                <li><strong>Tests & Assessments:</strong> How tests work, scoring, retaking tests</li>
+                <li><strong>Privacy & Security:</strong> Data protection, GDPR rights, cookie management</li>
+                <li><strong>Billing:</strong> Pricing, subscriptions, refunds (if applicable)</li>
+            </ul>
+            <p>
+                <a href="/#faq" style="color: var(--color-teal); font-weight: 600;">View FAQ →</a>
+            </p>
+        </div>
+
+        <div class="voon-box">
+            <h3>🏢 About Voon IQ</h3>
+            <p>
+                Longevity IQ is a product of <strong>Voon IQ</strong>, a Finnish technology company helping businesses
+                adopt AI and technology safely and quickly.
+            </p>
+            <p>
+                For business inquiries, AI consulting, or technology solutions:
+            </p>
+            <p>
+                <a href="mailto:info@voon.fi">info@voon.fi</a> |
+                <a href="https://voon.fi" target="_blank">voon.fi</a> |
+                <a href="https://business.voon.fi/fi" target="_blank">business.voon.fi</a>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Office Information</h2>
+            <p>
+                <strong>Voon IQ</strong><br>
+                Helsinki, Finland<br>
+                <em>Remote-first company</em>
+            </p>
+            <p style="margin-top: 1rem; color: var(--color-text-secondary);">
+                We operate as a remote-first organization. All communication is handled via email.
+                We do not have a physical office for walk-in visits.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Regulatory Information</h2>
+            <p>
+                <strong>Data Protection Officer:</strong> privacy@longevityiq.com
+            </p>
+            <p>
+                <strong>Finnish Data Protection Ombudsman:</strong><br>
+                P.O. Box 800<br>
+                FI-00521 Helsinki, Finland<br>
+                Website: <a href="https://tietosuoja.fi/en/" target="_blank"
+                    style="color: var(--color-teal); font-weight: 600;">tietosuoja.fi/en</a>
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Social Media & Updates</h2>
+            <p>
+                Stay updated with the latest longevity science, platform updates, and health insights:
+            </p>
+            <p style="margin-top: 1rem;">
+                <em>Social media channels coming soon...</em>
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>We Value Your Feedback</strong>
+            <p style="margin-top: 1rem;">
+                Your input helps us improve Longevity IQ. Whether it's a feature request, bug report, or general
+                feedback,
+                we want to hear from you. Every message is read and considered.
+            </p>
+        </div>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+
+    <script type="module" src="/src/js/cookie-consent.js"></script>
+</body>
+
+</html>
