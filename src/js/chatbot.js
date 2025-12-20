@@ -24,6 +24,13 @@ Your tone should be:
 - Scientific but accessible`;
 
 export async function sendChatMessage(message, conversationHistory = []) {
+    // For now, always use mock responses to avoid CORS issues
+    // TODO: Implement serverless function proxy for production API calls
+    console.log('Chatbot received message:', message);
+    console.log('Using mock response (CORS-safe)');
+    return getMockResponse(message);
+
+    /* Disabled until serverless proxy is implemented
     // Always use mock responses in development
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         console.log('Using mock response in development mode');
@@ -76,10 +83,11 @@ export async function sendChatMessage(message, conversationHistory = []) {
             message: error.message,
             stack: error.stack
         });
-
+        
         // Fallback to mock response
         return getMockResponse(message);
     }
+    */
 }
 
 // Mock responses for development/fallback
