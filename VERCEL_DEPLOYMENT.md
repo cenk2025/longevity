@@ -1,9 +1,12 @@
 # Vercel Deployment Guide
 
+## Custom Domain
+**Production URL:** https://longevity.voon.fi
+
 ## Prerequisites
 - Vercel account (https://vercel.com)
 - GitHub repository connected
-- Custom domain (optional)
+- Access to voon.fi DNS settings
 
 ## Step 1: Install Vercel CLI (Optional)
 ```bash
