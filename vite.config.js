@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/longevity/', // GitHub Pages path (use '/' for custom domain on Vercel)
+    base: '/', // Root path for custom domain (longevity.voon.fi)
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
