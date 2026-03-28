@@ -6,6 +6,7 @@ import { renderDashboard } from './js/dashboard.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
     initializeNavbar();
     initializeLanguageToggle();
     renderTests();
@@ -16,6 +17,37 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeCTAButtons();
     initializeHashNavigation();
 });
+
+function initializeTheme() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    const ICONS = { dark: '☀', light: '☾' };
+    const LABELS = { dark: 'Switch to light mode', light: 'Switch to dark mode' };
+
+    function apply(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        btn.querySelector('.theme-icon').textContent = ICONS[theme];
+        btn.title = LABELS[theme];
+        btn.setAttribute('aria-label', LABELS[theme]);
+    }
+
+    // Sync icon with the theme already applied by anti-flash script
+    apply(document.documentElement.getAttribute('data-theme') || 'dark');
+
+    btn.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        localStorage.setItem('liq-theme', next);
+    });
+
+    // Follow OS preference changes only when user has no saved choice
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('liq-theme')) {
+            apply(e.matches ? 'dark' : 'light');
+        }
+    });
+}
 
 function initializeNavbar() {
     const navbar = document.getElementById('navbar');
